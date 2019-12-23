@@ -1,1 +1,1 @@
-D:/Algorithms4/Algorithms4/algs4-data/largeEWD.txt filter=lfs diff=lfs merge=lfs -text
+Algorithms4/algs4-data/largeEWD.txt filter=lfs diff=lfs merge=lfs -text

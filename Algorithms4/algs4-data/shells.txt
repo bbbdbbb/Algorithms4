@@ -1,2 +1,3 @@
-she sells seashells by the sea shore
-the shells she sells are surely seashells
+version https://git-lfs.github.com/spec/v1
+oid sha256:dd28478f9abcdac2585d1ff4ea598d67ca3ed3097ae158a7f4a331cca67124b7
+size 81

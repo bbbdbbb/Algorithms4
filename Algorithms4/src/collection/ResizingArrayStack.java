@@ -2,6 +2,15 @@ package collection;
 
 import java.util.Iterator;
 
+/**   
+*    
+* 项目名称：Algorithms4   
+* 类名称：ResizingArrayStack   
+* 类描述：《算法4》P88的算法1.1 下压栈（数组实现）   
+* 创建人：bbbdbbb   
+* 创建时间：2020年1月30日 下午10:06:17   
+* @version        
+*/
 public class ResizingArrayStack<Item> implements Iterable<Item>{
 	//Java中不能直接创建泛型数组
 	@SuppressWarnings("unchecked")

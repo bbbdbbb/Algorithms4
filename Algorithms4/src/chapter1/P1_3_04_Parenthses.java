@@ -23,6 +23,10 @@ public class P1_3_04_Parenthses {
 			if(item.equals("(") || item.equals("[") || item.equals("{")){
 				s.push(item);
 			}else if(!s.isEmpty() && item.equals(")")){
+				if(s.isEmpty()){
+					System.out.println(false);
+					System.exit(0);
+				}
 				String str = s.pop();
 				if(!"(".equals(str)){
 					System.out.println(false);

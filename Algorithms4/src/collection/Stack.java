@@ -1,12 +1,13 @@
 package collection;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**   
 *    
 * 项目名称：Algorithms4   
 * 类名称：Stack   
-* 类描述：《算法4》P98的算法1.2 下压堆栈（链表实现）   
+* 类描述：《算法4》P94的算法1.2 下压堆栈（链表实现）   
 * 创建人：bbbdbbb   
 * 创建时间：2020年1月30日 下午10:54:28   
 * @version        
@@ -36,7 +37,7 @@ public class Stack<Item> implements Iterable<Item>{
 	}
 	public Item pop(){//从栈顶删除元素
 		Item item = first.item;
-		first.next = first.next.next;
+		first = first.next;
 		N--;
 		return item;
 	}
@@ -61,6 +62,11 @@ public class Stack<Item> implements Iterable<Item>{
 			current = current.next;
 			return item;
 		}
+		
+	    public Item peek() {
+	        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+	        return first.item;
+	    }
 		
 	}
 	

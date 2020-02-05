@@ -18,40 +18,42 @@ public class P1_3_04_Parenthses {
 
 	public static void main(String[] args) {
 		Stack<String> s = new Stack<>();
+		System.out.println("输入：");
 		while(!StdIn.isEmpty()){
 			String item = StdIn.readString();
+			System.out.print(item+" ");
 			if(item.equals("(") || item.equals("[") || item.equals("{")){
 				s.push(item);
 			}else if(!s.isEmpty() && item.equals(")")){
 				if(s.isEmpty()){
-					System.out.println(false);
+					System.out.println("\n结果:"+false);
 					System.exit(0);
 				}
 				String str = s.pop();
 				if(!"(".equals(str)){
-					System.out.println(false);
+					System.out.println("\n结果:"+false);
 					System.exit(0);
 				}
 			}else if(!s.isEmpty() && item.equals("]")){
 				String str = s.pop();
-				if(!"".equals(str)){
-					System.out.println(false);
+				if(!"[".equals(str)){
+					System.out.println("\n结果:"+false);
 					System.exit(0);
 				}
 			}else if(!s.isEmpty() && item.equals("}")){
 				String str = s.pop();
 				if(!"{".equals(str)){
-					System.out.println(false);
+					System.out.println("\n结果:"+false);
 					System.exit(0);
 				}
 			}else{//标准输入中含有其他字符
-				System.out.println(false);
+				System.out.println("\n结果:"+false);
 				System.exit(0);
 			}
 			
 		}
 		//程序执行到这里，说明全部括号配对完整  
-		System.out.println(true);
+		System.out.println("\n结果:"+true);
 	}
 
 }

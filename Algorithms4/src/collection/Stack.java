@@ -41,6 +41,24 @@ public class Stack<Item> implements Iterable<Item>{
 		N--;
 		return item;
 	}
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        return first.item;
+    }
+    public static Stack<String> copy(Stack<String> stack){
+    	//复制栈时，要注意栈中的元素顺序
+    	Stack<String> temp = new Stack<>();
+    	Stack<String> copyStack = new Stack<>();
+    	for(String s : stack){
+    		temp.push(s);
+    	}
+    	for(String t : temp){
+    		copyStack.push(t);
+    	}
+    	return copyStack;
+    }
+	
+    
 	@Override
 	public Iterator<Item> iterator() {
 		// TODO Auto-generated method stub
@@ -61,13 +79,7 @@ public class Stack<Item> implements Iterable<Item>{
 			Item item = current.item;
 			current = current.next;
 			return item;
-		}
-		
-	    public Item peek() {
-	        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-	        return first.item;
-	    }
-		
+		}	    
 	}
 	
 	

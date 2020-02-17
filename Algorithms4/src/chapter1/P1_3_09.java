@@ -34,7 +34,7 @@ public class P1_3_09 {
 				String newBracket = "("+first+operator.pop()+second+")";
 				number.push(newBracket);
 				
-				System.out.println("打桩： 1新产生的括号表达式为 "+newBracket);
+				//System.out.println("打桩： 1新产生的括号表达式为 "+newBracket);
 				
 			}else{
 				//输入数据不能够成一个完整的括号表达式

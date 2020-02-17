@@ -41,7 +41,7 @@ public class P1_3_08 {
 			}
 			
 		}
-		StdOut.println("\n剩下的元素数量："+s.size());
+		StdOut.println("\n\n最后剩下的元素数量："+s.size());
 	}
 
 }

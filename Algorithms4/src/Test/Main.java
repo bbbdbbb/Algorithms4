@@ -1,34 +1,30 @@
 package Test;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.Random;
 
 public class Main {
-	public static int update(int ans,int a,int b){
-		if(ans<(a^b))		return a^b;
-		else				return ans;
-	}
 
+	 
 	public static void main(String[] args) {
-		Stack<Integer> stack = new Stack<Integer>();
-		int ans = 0;
-
-		Scanner scan = new Scanner(System.in);
-		int N = scan.nextInt();
-		int a[] = new int[N];
-		
-		for(int i=0;i<N;i++){
-			int t = scan.nextInt();
-			while(!stack.isEmpty() && stack.peek()<t){
-				ans = update(ans,stack.peek(),t);
-				stack.pop();
-			}
-			if(!stack.isEmpty())
-				ans = update(ans,stack.peek(),t);
-			stack.push(t);
+		String[] arr = {
+				"我","算法","高","高世","高世杰","付易是个大老板","我不是高镜淞","代代","老f","哈哈",
+		};
+		Random random = new Random();
+		for(int i=arr.length-1;i>=0;i--){
+			swap(arr,i,random.nextInt(i+1));
 		}
 		
-		System.out.println(ans);
+		for(int i=0;i<arr.length;i++){
+			if(i%3==0)		System.out.println();
+			System.out.print(arr[i]+"   ");
+			
+		}
+	}
+	
+	public static void swap(String[] a, int i, int j) {
+		String t = a[i];
+		a[i] = a[j];
+		a[j] = t;
 	}
 
 }

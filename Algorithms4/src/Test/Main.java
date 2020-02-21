@@ -6,11 +6,10 @@ public class Main {
 
 	 
 	public static void main(String[] args) {
-		String[] arr = {
-				"我","算法","高","高世","高世杰","付易是个大老板","我不是高镜淞","代代","老f","哈哈",
-		};
+		
 		Random random = new Random();
 		for(int i=arr.length-1;i>=0;i--){
+			//随机生成的随机数范围就变成[0,i+1)
 			swap(arr,i,random.nextInt(i+1));
 		}
 		
@@ -26,5 +25,9 @@ public class Main {
 		a[i] = a[j];
 		a[j] = t;
 	}
+	
+	private static String[] arr = {
+			"我","算法","高","高世","高世杰","付易是个大老板","我不是高镜淞","代代","老f","哈哈",
+	};
 
 }

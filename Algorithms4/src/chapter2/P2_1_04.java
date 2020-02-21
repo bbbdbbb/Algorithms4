@@ -7,5 +7,5 @@ public class P2_1_04 {
 	 * 将数组E A S Y Q U E S T I O N	排序的？
 	 * 
 	 */
-	//答案图片链接：
+	//答案图片链接：https://github.com/bbbdbbb/Algorithms4/blob/master/Algorithms4/img/P2_1_04.jpg
 }

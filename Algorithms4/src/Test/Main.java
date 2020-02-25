@@ -1,33 +1,63 @@
 package Test;
 
+import java.util.Queue;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
 
-	 
+	//快排
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		Queue<Integer> queue = new LinkedBlockingQueue<Integer>(); 
 		
-		Random random = new Random();
-		for(int i=arr.length-1;i>=0;i--){
-			//随机生成的随机数范围就变成[0,i+1)
-			swap(arr,i,random.nextInt(i+1));
+		while(true){
+			int num = scan.nextInt();
+			if(num==0)		break;
+			queue.add(num);
+		}
+		int[] a = new int[queue.size()];
+		for(int i=0;i<a.length;i++){
+			a[i] = queue.poll();
 		}
 		
-		for(int i=0;i<arr.length;i++){
-			if(i%3==0)		System.out.println();
-			System.out.print(arr[i]+"   ");
-			
+		sort(a,0,a.length-1);
+		
+		for(int num : a){
+			System.out.print(num+" ");
 		}
 	}
-	
-	public static void swap(String[] a, int i, int j) {
-		String t = a[i];
-		a[i] = a[j];
-		a[j] = t;
-	}
-	
-	private static String[] arr = {
-			"我","算法","高","高世","高世杰","付易是个大老板","我不是高镜淞","代代","老f","哈哈",
-	};
 
+	
+	private static void sort(int[] a, int lo, int hi) {
+		
+		if(hi<=lo)		return;
+		int j = partition(a,lo,hi);
+		sort(a,lo,j-1);
+		sort(a,j+1,hi);
+	}
+
+
+	//快排的切分函数
+	private static int partition(int[] a,int lo,int hi){
+		
+		int i=lo;
+		int j=hi+1;
+		int v=a[lo];
+		
+		while(true){
+			while(a[++i]<v)	if(i==hi) break;
+			while(v<a[--j])	if(j==lo) break;
+			if(i>=j)	break;
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
+		int temp = a[j];
+		a[j] = a[lo];
+		a[lo] = temp;
+		
+		return j;
+	}
 }

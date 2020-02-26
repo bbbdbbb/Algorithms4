@@ -9,24 +9,9 @@ public class Main {
 
 	//øÏ≈≈
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		Queue<Integer> queue = new LinkedBlockingQueue<Integer>(); 
+		int i=5;
+		int j=3;
 		
-		while(true){
-			int num = scan.nextInt();
-			if(num==0)		break;
-			queue.add(num);
-		}
-		int[] a = new int[queue.size()];
-		for(int i=0;i<a.length;i++){
-			a[i] = queue.poll();
-		}
-		
-		sort(a,0,a.length-1);
-		
-		for(int num : a){
-			System.out.print(num+" ");
-		}
 	}
 
 	

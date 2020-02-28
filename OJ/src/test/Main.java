@@ -4,46 +4,27 @@ import java.util.Scanner;
 
 public class Main {
 
-
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
+		String s1 = scan.next();
+		String s2 = scan.next();
 		
-		String str = f(n);
+		char[] chs1 = s1.toCharArray();
+		char[] chs2 = s2.toCharArray();
 		
-		System.out.print(str);
+		int end = f(chs1,0,chs2,0);		
+		System.out.print(end);
 
 	}
 
-	private static String f(int n) {
+	private static int f(char[] chs1, int i, char[] chs2, int j) {
 		
-		String temp = "";
-		
-//		if(n==0) return "(0)";
-//		if(n==1) return "";
-//		if(n==2) return "(2)";
-		
-		//将整数转化为二进制
-		String binaryN = Integer.toBinaryString(n);
-		int N = binaryN.length();
-		System.out.println("bN:"+binaryN);
-		for(int i=0;i<N;i++){
-			if(binaryN.charAt(i)=='1' && i==N-1){
-				temp = temp + "2(0)";
-			}else if(binaryN.charAt(i)=='1' && i==N-2){
-				temp = temp + "2";
-			}else if(binaryN.charAt(i)=='1' && i==N-3){
-				temp = temp + "2(2)";
-			}else if(binaryN.charAt(i)=='1'){
-				temp = temp + "2(" + f(binaryN.length()-i-1) + ")";
-			}
-			
-			
-			if(i!=N-1 && binaryN.charAt(i)=='1' && binaryN.lastIndexOf('1')>i)	temp = temp + "+";
-		}
-		return temp;
-	}
+		//递归终止条件
+		if(i==chs1.length || j==chs2.length)	return 0;
+		else if(chs1[i] == chs2[j])				return f(chs1,i+1,chs2,j+1)+1;
+		else									return Math.max(f(chs1,i+1,chs2,j), f(chs1,i,chs2,j+1));
 
+	}
 
 }

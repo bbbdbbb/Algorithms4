@@ -2,7 +2,7 @@ package easy;
 
 import java.util.Scanner;
 
-/**   
+/** 有细节  
 * 算法训练 P0505
 * http://lx.lanqiao.cn/problem.page?gpid=T512
 *    
@@ -38,6 +38,9 @@ public class ALGO_189 {
 			while(end%10==0){
 				end = end / 10;
 			}
+			/*
+			 * 这里要多保留几位精度，不然会出现问题
+			 */
 			end = end % 1000;
 		}
 		

@@ -1,69 +1,63 @@
 package test;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
-	public static int[] a;
-	public static int[] sum;
-	public static boolean flag;
 	
 	public static void main(String[] args) {
-		
+		long startMili=System.currentTimeMillis();
 
 		
 		Scanner scan = new Scanner(System.in);
 		int n = scan.nextInt();
 		int m = scan.nextInt();
 		
-		a = new int[n];
-		sum = new int[n];
-		for (int i = 0; i < a.length; i++) {
+		int[] a = new int[n];
+		boolean[] vis = new boolean[n];
+		for(int i=0;i<n;i++){
 			a[i] = scan.nextInt();
-			if(i!=0){
-				sum[i] = sum[i-1]+a[i];
-			}else{
-				sum[0] = a[0];
-			}
+			vis[i] = false;
 		}
 		
-		while(m--!=0){
-			long startMili=System.currentTimeMillis();
-			int s = scan.nextInt();
-			flag = false;
-			if(s<=0)	System.out.println("NO");
-			else{
-				dfs(s,n-1);
-				if(flag)	System.out.println("YES");
-				else		System.out.println("NO");
-			}
-			long endMili=System.currentTimeMillis();
-			System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+		if(n/2<m)		System.out.print("Error!");
+		else{
+			int sum = 0;
+			sum = f(a,vis,sum);
+			
+			System.out.println(sum);
+		}
+		
 
-		}
-		
-		
+
+
 		//计时，在提交答案的时候要删除
-
+		long endMili=System.currentTimeMillis();
+		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
 	}
 
-	private static void dfs(int s, int i) {
-
-		if(flag)	return;
-		if(i<0)		return;
-		if(Math.abs(s)>sum[i])	return;
+	private static int f(int[] a, boolean[] vis, int sum) {
 		
-		if(s==0 || Math.abs(s)==sum[i]){
-			flag = true;
-			return;
+		int len = vis.length;
+		for (int i = 0; i < len; i++) {
+			//i和i+1相邻，不符合条件
+			if(vis[i] && vis[(i+1)%len])
+				return sum;
 		}
 		
-		if(i<0)		return;
-		dfs(s-a[i],i-1);
-		dfs(s,i-1);
-		dfs(s+a[i],i-1);
-		return;
+		int[] temp = new int[len];
+		for (int i = 0; i < len; i++) {
+			if(vis[i])		continue;
+			vis[i] = true;
+			temp[i] = f(a,vis,sum+a[i]);
+			vis[i] = false;
+			
+		}
+		Arrays.sort(temp);
+		System.out.println(temp[len-1]);
+		
+		return temp[len-1];
 	}
 
-
+	
 }

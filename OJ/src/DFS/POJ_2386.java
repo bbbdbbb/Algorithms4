@@ -1,18 +1,43 @@
-package test;
+package DFS;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+/** bfs入门
+ * 2386:Lake Counting
+ * http://bailian.openjudge.cn/practice/2386/  
+*    
+* 项目名称：OJ   
+* 类名称：POJ_2386   
+* 题目描述：  
+	判断输入的char数组中一共有几块W
 	
+	输入：
+10 12
+W........WW.
+.WW......WWW
+....WW...WW.
+.........WW.
+............
+..W......W..
+.........WW.
+W.W.W.....W.
+.W.W......W.
+..W...W...W.
+
+	输出：
+7
+	
+* 创建人：bbbdbbb   
+* 创建时间：2020年3月3日 下午5:51:52   
+* @version        
+*/
+public class POJ_2386 {
 	public static char[][] chs;
 	private static int n;
 	private static int m;
 	
 	public static void main(String[] args) {
-		long startMili=System.currentTimeMillis();
-
-		
+	
 		Scanner scan = new Scanner(System.in);
 		n = scan.nextInt();
 		m = scan.nextInt();
@@ -38,9 +63,7 @@ public class Main {
 		}
 		System.out.println(count);
 		
-		//计时，在提交答案的时候要删除
-		long endMili=System.currentTimeMillis();
-		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+
 	}
 
 	
@@ -58,5 +81,4 @@ public class Main {
 		}
 	}
 
-	
 }

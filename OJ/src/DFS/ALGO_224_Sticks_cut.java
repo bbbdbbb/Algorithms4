@@ -1,9 +1,20 @@
-package test;
+package DFS;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+
+/** 剪枝过的dfs，很多细节，需要仔细理解
+ * 算法训练 Sticks
+ * http://lx.lanqiao.cn/problem.page?gpid=T572  
+*    
+* 项目名称：OJ   
+* 类名称：ALGO_224_Sticks   
+* 创建人：bbbdbbb   
+* 创建时间：2020年3月5日 下午8:03:26   
+* @version        
+*/
+public class ALGO_224_Sticks_cut {
 	
 	private static int n;//小木棍的数量
 	private static int[] s;//按长度从小到大存储每一个小木棍的长度

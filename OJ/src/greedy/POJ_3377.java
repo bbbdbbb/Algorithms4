@@ -1,9 +1,19 @@
-package Test;
+package greedy;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+/** 贪心算法  思路简单，实现细节很多
+ * Best Cow Line, Gold
+ * http://bailian.openjudge.cn/practice/3377/
+*    
+* 项目名称：OJ   
+* 类名称：POJ_3377   
+* 类描述：   
+* 创建人：bbbdbbb   
+* 创建时间：2020年3月9日 下午4:22:10   
+* @version        
+*/
+public class POJ_3377 {
 
 	public static void main(String[] args) {
 
@@ -16,15 +26,6 @@ public class Main {
 		for(int i = 0; i < N; i++){			
 			chs[i] = scan.next().charAt(0);
 		}
-//		int f = 0;
-//		while(scan.hasNext()){
-//			chs[f++] = scan.next().charAt(0);
-//			if(f>=N)	break;
-//		}
-		
-//		for (int i = 0; i < chs.length; i++) {
-//			System.out.println(i+": "+chs[i]);
-//		}
 		
 		int pri = 0;
 		int end = N-1;
@@ -43,12 +44,13 @@ public class Main {
 
 			}
 			
-			if(count==80){
+			if(count==80){//80个字母换行
 				System.out.println();
 				count=0;
 			}
-			if(left){
-				
+			
+			
+			if(left){				
 				System.out.print(chs[pri++]);
 				count++;
 			}
@@ -63,5 +65,3 @@ public class Main {
 	
 	}
 }
-
-

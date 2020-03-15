@@ -1,7 +1,12 @@
 package test;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
 	public static int[] pazz;
@@ -13,35 +18,29 @@ public class Main {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
-		int m = scan.nextInt();
-		pazz = new int[m];
+		Queue<Integer> q=new PriorityQueue<>();
+		q.add(0);
+		q.add(1);
+		q.add(2);
+		q.add(1);
+		while(!q.isEmpty())
+        {
+            int n=q.poll();
+            System.out.println(n);
+        }
 		
-		int sum = 0;
-		for(int j = 0; j < m; j++){
-			pazz[j] = scan.nextInt();
-			sum += pazz[j];
+		Set<Integer> set = new HashSet<Integer>();
+		for (int i = 0; i < 10; i++) {
+			set.add(scan.nextInt());
 		}
-		Arrays.sort(pazz);
 		
-		int max = sum / n;
-		int i = max;
-		for(; i > 0; i--){
-			int count = 0;
-			for(int j = m-1; j >= 0; j--){
-				count = count + pazz[j] / i;
-//				if(i > pazz[j]){
-//					break;
-//				}
-			}
-			if(count >= n){
-				System.out.println(i);
-				break;
-			}
-		}
-		if(i == 0){
-			System.out.println(0);
-		}
+		Iterator<Integer> it = set.iterator();
+		
+		while(it.hasNext())
+        {
+			int nnn = set.size();
+            System.out.println(it.next());
+        }
 		
 		scan.close();
 		//计时，在提交答案的时候要删除

@@ -4,64 +4,40 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
+	
+	static int[] dx = new int[]{1,0,-1,0};
+	static int[] dy = new int[]{0,-1,0,1};
+	static int dir = 0;//记录当前方向，0表示x正，1表示y负，2表示x负，3表示y正
+	
 	public static void main(String[] args) {
+		
+		int x=0,y=0;
 
-		
-		Scanner scan = new Scanner(System.in);
-		int count = 0;
-		int N = scan.nextInt();
-//		scan.nextLine();
-		char[] chs = new char[N];
-		for(int i = 0; i < N; i++){			
-			chs[i] = scan.next().charAt(0);
-		}
-//		int f = 0;
-//		while(scan.hasNext()){
-//			chs[f++] = scan.next().charAt(0);
-//			if(f>=N)	break;
-//		}
-		
-//		for (int i = 0; i < chs.length; i++) {
-//			System.out.println(i+": "+chs[i]);
-//		}
-		
-		int pri = 0;
-		int end = N-1;
-		//贪心选择，从头和尾中选择一个字典序列小的首字母
-		while(pri <= end){
-			boolean left = false;//判断 获取 头部或尾部的首字母
-			
-			for(int i = 0; pri + i <= end; i++){
-				if(chs[pri+i] < chs[end-i]){
-					left = true;//获取 头部的首字母
-					break;
-				}else if(chs[pri+i] > chs[end-i]){
-					left = false;
-					break;
-				}
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        for(int i = 0; i < n; i++){
+        	String opt = scan.next();
+        	int len = scan.nextInt();
+        	
+        	if("back".equals(opt)){
+        		dir = (dir + 2) % 4; 
+        	}else if("left".equals(opt)){
+        		dir = (dir + 3) % 4; 
+        	}
+        	else if("right".equals(opt)){
+        		dir = (dir + 1) % 4; 
+        	}
+        	
+       		x = x + dx[dir] * len;
+    		y = y + dy[dir] * len;
+        }
+        
+        System.out.println(x+" "+y);
 
-			}
-			
-			if(count==80){
-				System.out.println();
-				count=0;
-			}
-			if(left){
-				
-				System.out.print(chs[pri++]);
-				count++;
-			}
-			else{
-				System.out.print(chs[end--]);
-				count++;
-			}
-		}
-		
-		System.out.println();
 		scan.close();
 	
 	}
+
 }
 
 

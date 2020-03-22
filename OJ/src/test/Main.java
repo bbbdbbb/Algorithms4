@@ -16,21 +16,13 @@ public class Main {
 	public static void main(String[] args) {
 		long startMili=System.currentTimeMillis();
 
-		
-		Scanner scan = new Scanner(System.in);
-		
-	    int N = scan.nextInt();
-	    int R = scan.nextInt();
-	        
-	    String ans = "";
-	    if(N < 0)		N += Math.pow(2,32);
-	        
-	    ans = shift(N,R);
-	        
-	    System.out.println(ans); 
-	        
+		father f = new father(1,"hh");
+		son s = new son(1,"hh");
+		System.out.println(f.getClass());
+	    System.out.println(s.getClass()); 
 	    
-		scan.close();
+		
+		
 		//计时，在提交答案的时候要删除
 		long endMili=System.currentTimeMillis();
 		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");

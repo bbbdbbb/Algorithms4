@@ -1,52 +1,47 @@
 package test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.Comparator;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
-	public static int[] pazz;
-	public static char[] chs = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
-
 
 	public static void main(String[] args) {
 		long startMili=System.currentTimeMillis();
-
-		father f = new father(1,"hh");
-		son s = new son(1,"hh");
-		System.out.println(f.getClass());
-	    System.out.println(s.getClass()); 
-	    
+		Scanner scan = new Scanner(System.in);
 		
+
+		while(true){
+			if(scan.nextInt() == 1){
+				System.out.println("11111111");
+			}else{
+				System.out.println("22222");
+			}
+
+		
+		}
 		
 		//计时，在提交答案的时候要删除
-		long endMili=System.currentTimeMillis();
-		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+		//long endMili=System.currentTimeMillis();
+		//System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+	}
+	
+	public class node{
+		public int k;
+		public int a1;
+		public int x;
+		public int y;
+		public int m;
+	}
+	
+	//创建node的比较器
+	public class nodeComparator implements Comparator<node>{
+
+		@Override
+		public int compare(node o1, node o2) {
+			return o1.a1 - o2.a1;
+		}
+		
 	}
 	
 	
-	  public static String shift(int N, int R){
-	        
-	        char[] nums = new char[32];
-	        int head = nums.length;
-	        
-	        if(N == 0)		return "0";
-	        while(N!=0){
-                int mod = N % R;
-                
-                nums[--head] = chs[mod];
-                System.out.println(nums[head]);
-                N /= R;
-	        }
-	        
-	               
-	        return String.valueOf(nums,head,32-head).toUpperCase();
-	    }
-	
-	
-
 }

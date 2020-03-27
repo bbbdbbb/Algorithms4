@@ -1,10 +1,23 @@
-package test;
+package greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class Main {
+/** 贪心算法，类似于OS中的进程资源分配有关的“最少需求先分配”
+ * 算法提高 盾神与积木游戏
+ * ADV-194
+ * http://lx.lanqiao.cn/problem.page?gpid=T361
+ *   
+*    
+* 项目名称：OJ   
+* 类名称：ADV_194   
+* 类描述：   
+* 创建人：bbbdbbb   
+* 创建时间：2020年3月27日 下午8:44:22   
+* @version        
+*/
+public class ADV_194 {
 
 	public static node[] nds;
 	
@@ -20,10 +33,8 @@ public class Main {
 			nds = new node[n];
 			for(int nC = 0; nC < n; nC++){
 				nds[nC] = new node(scan.nextInt(),scan.nextInt());
-			}
-			//自己写的冒泡排序，效率太低，复杂度高，时间在2500ms
+			}			
 			//nds = sort(nds);
-			//使用比较器Comparator接口，调用Arrays的排序方法  时间在880ms
 			Arrays.sort(nds, new nodeComparator());
 
 			
@@ -54,8 +65,8 @@ public class Main {
 		
 		
 		//计时，在提交答案的时候要删除
-		long endMili=System.currentTimeMillis();
-		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+		//long endMili=System.currentTimeMillis();
+		//System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
 	}
 	
 	public static class node{

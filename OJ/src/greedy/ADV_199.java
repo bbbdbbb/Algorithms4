@@ -3,6 +3,40 @@ package greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/** 贪心算法，思路简单，暴力，后期可以考虑代码优化；无解输出-1，没有解决
+ * ADV-199
+ *  算法提高 线段和点
+ *  http://lx.lanqiao.cn/problem.page?gpid=T367  
+问题描述
+　　有n个点和m个区间，点和区间的端点全部是整数，对于点a和区间[b,c]，若a>=b且a<=c，称点a满足区间[b,c]。
+　　求最小的点的子集，使得所有区间都被满足。
+输入格式
+　　第一行两个整数n m
+　　以下n行 每行一个整数，代表点的坐标
+　　以下m行 每行两个整数，代表区间的范围
+输出格式
+　　输出一行，最少的满足所有区间的点数，如无解输出-1。
+样例输入
+5 5
+2
+6
+3
+8
+7
+2 5
+3 4
+3 3
+2 7
+6 9
+样例输出
+2
+* 项目名称：OJ   
+* 类名称：ADV_199   
+* 类描述：   
+* 创建人：bbbdbbb   
+* 创建时间：2020年3月27日 下午11:09:50   
+* @version        
+*/
 public class ADV_199 {
 
 	private static int[] ns;

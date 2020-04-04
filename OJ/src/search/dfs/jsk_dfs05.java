@@ -10,6 +10,8 @@ public class jsk_dfs05 {
 	private static int[][] dir = {{0,1},{1,0},{0,-1},{-1,0}};
 
 	public static void main(String[] args) {
+		
+		long start = System.currentTimeMillis();
 
 		Scanner scan = new Scanner(System.in);
 		N = scan.nextInt();
@@ -20,6 +22,8 @@ public class jsk_dfs05 {
 		
 		
 		System.out.println(ans);
+		
+		System.out.println("”√ ±£∫" + (System.currentTimeMillis() -start));
 		
 	}
 

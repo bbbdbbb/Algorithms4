@@ -1,12 +1,23 @@
-package DFS;
+package search.dfs;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-
-/** 剪枝过的dfs，很多细节，需要仔细理解
+/** 本代码  暴力搜索  ， 严重超时，需要剪枝
  * 算法训练 Sticks
  * http://lx.lanqiao.cn/problem.page?gpid=T572  
+*    
+	输入：
+9
+5 2 1 5 2 1 5 2 1
+4
+1 2 3 4
+0
+	输出：
+6
+5
+
+
 *    
 * 项目名称：OJ   
 * 类名称：ALGO_224_Sticks   
@@ -14,7 +25,7 @@ import java.util.Scanner;
 * 创建时间：2020年3月5日 下午8:03:26   
 * @version        
 */
-public class ALGO_224_Sticks_cut {
+public class ALGO_224_Sticks {
 	
 	private static int n;//小木棍的数量
 	private static int[] s;//按长度从小到大存储每一个小木棍的长度
@@ -30,8 +41,8 @@ public class ALGO_224_Sticks_cut {
 
 		
 		Scanner scan = new Scanner(System.in);
-		//n = scan.nextInt();//小木棍的数量
-		while((n=scan.nextInt()) != 0 ){
+		n = scan.nextInt();//小木棍的数量
+		while(n!=0){
 			s = new int[n];
 			vis = new boolean[n];
 			sum = 0;				//我忽略了这里，导致第一次以后的计算出错
@@ -55,10 +66,9 @@ public class ALGO_224_Sticks_cut {
 			}
 
 			//System.out.println("\nn="+n);
-			//n = scan.nextInt();
+			n = scan.nextInt();
 		}
 		
-		scan.close();
 		//计时，在提交答案的时候要删除
 		long endMili=System.currentTimeMillis();
 		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
@@ -86,8 +96,7 @@ public class ALGO_224_Sticks_cut {
 		}
 		
 		while(next>=0){
-			if(vis[next]==false){
-				
+			if(!vis[next]){
 				if(len+s[next]<=max){//当前选中的木棍s[next]可以使用
 					vis[next] = true;
 					if(f(len+s[next],next-1,cpl)){
@@ -95,40 +104,7 @@ public class ALGO_224_Sticks_cut {
 					}
 					
 					vis[next] = false;
-					
-					//若在本次搜索失败时，len=0，则以当前最长木棍为第一根木棍，无法组合剩下的木棍，成为一个完整的木棒
-					if(len == 0){
-						break;
-					}
-					
-					//len加上当前的木棍s[next]等于一根完整的木棒，当后面的木棍不能成功拼凑
-					if(len+s[next] == max){
-						break;
-					}										
 				}
-				
-				//len+s[next] > max  跳过同等长度的木棍
-				int i = next-1;
-				while(i>=0 && s[next]==s[i]){
-					i--;
-				}
-				next = i;// !!!注意：     上面先i = next-1;  现在 又 next = i;   这里有个隐含的信息就是  next至少减一,已经完成了更新
-				
-				//判断剩余木棍的长度+当前已拼凑长度len 是否大于or等于  max
-				int rest = 0;
-				while(i>=0){
-					if(vis[i]==false){
-						rest += s[i];
-					}
-					i--;
-				}
-				
-				//剩余木棍的长度+当前已拼凑长度len 小于 max
-				if(rest+len<max){
-					break;
-				}
-				
-				continue;//上面已经更新了next，这里必须直接跳到while，否则继续执行会使得next多一
 			}
 			
 			next--;
@@ -138,5 +114,4 @@ public class ALGO_224_Sticks_cut {
 		
 	}
 
-	
 }

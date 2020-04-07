@@ -50,7 +50,7 @@ public class jsk_abstract_dfs01 {
 		if(s % 3 != 0){
 			System.out.println("no");
 		}else{
-			dfs(0,0,0);
+			dfs2(0,0,0);
 			if(flag){
 				System.out.println("yes");
 			}else{
@@ -108,7 +108,8 @@ public class jsk_abstract_dfs01 {
 	 * @param index 下一个应该搜索的木棍的索引
 	 */
 	private static void dfs(int count, int sum, int index) {
-
+		test++;
+		
 		if(flag){
 			return;
 		}
@@ -129,7 +130,7 @@ public class jsk_abstract_dfs01 {
 		}
 		
 		for(int i = index; i < n; i++){
-			test++;
+			
 			if(!vis[i]){
 				vis[i] = true;
 				//System.out.println("for>  i = " + i +" count = "+count + "  sum =  " +(sum + item[i]));
@@ -140,4 +141,39 @@ public class jsk_abstract_dfs01 {
 		
 	}
 
+	
+	//使用搜索枚举
+	private static void dfs2(int count, int sum, int index) {
+
+		if(flag){
+			return;
+		}
+		
+		if(index >= n){
+			return;
+		}
+		
+		if(count == 3){
+			flag = true;
+			return;
+		}
+		
+		if(sum == s / 3){
+			dfs(count + 1, 0,0);//优化的的关键是这里，以前写的是dfs(count + 1, 0,count)。直接传count会导致结果错误
+								//列如：
+								//在“1 2 3 4 5”中选择了‘1’ 和‘4’后理论上说应该从‘2’开始
+								//因为操作麻烦不能每次都精准的找到重新开始的位置，所以每当拼凑成功一根木棒时，从头开始重新搜索其他木棍
+								//如果按照dfs(count + 1, 0,count)的话，在“1 2 3 4 5”中选择了‘1’ 和‘4’后，
+								//就只能选择‘5’，导致不能正确判断
+			return;
+		}
+		
+		//选 当前  木棍
+		if(!vis[index]){
+			dfs2(count,sum + item[index],index + 1);
+		}
+		//不选 当前 木棍
+		dfs2(count,sum,index+1);
+		
+	}
 }

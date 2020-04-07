@@ -41,7 +41,7 @@ public class jsk_dfs05_cut {
 			}
 		}
 		
-		lost[N-1][0]++;
+		lost[N-1][0]++;//终点特殊处理，
 		ans = 0;
 		dfs(0,0,0);
 		
@@ -68,12 +68,13 @@ public class jsk_dfs05_cut {
 		map[x][y] = 1;
 		
 		//如果map[x][y]的四个方向  其中有一个点的剩余路线lost[tx][ty]只有一个了，那么必须走这个方向
+		// ！！！注意：  终点 是可以允许  剩余路线lost[tx][ty]只剩一个的，所有为了简单处理，在前面有lost[N-1][0]++;
 		int d = -1;
 		for(int i = 0; i < 4; i++){
 			int tx = x + dir[i][0];
 			int ty = y + dir[i][1];
 			if(in(tx,ty) && map[tx][ty] == 0){
-				lost[tx][ty]--;
+				lost[tx][ty]--;//由于对终点进行了特殊处理，这里不会出现  必须选择走终点而忽略其他路线的   问题
 				if(lost[tx][ty] == 1)
 					d = i;
 			}		
@@ -88,6 +89,7 @@ public class jsk_dfs05_cut {
 			int ty = y + dir[i][1];
 			
 			if(in(tx,ty) && map[tx][ty] == 0){
+				//再次剪枝
 				int count2 = 0;
 				boolean flag = true;
 				for(int j = 0; j < 4; j++){
@@ -109,6 +111,7 @@ public class jsk_dfs05_cut {
 			}			
 		}
 		
+		//恢复
 		map[x][y] = 0;
 		for(int i = 0; i < 4; i++){
 			int tx = x + dir[i][0];

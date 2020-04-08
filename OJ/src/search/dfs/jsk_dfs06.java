@@ -1,12 +1,34 @@
-package test;
+package search.dfs;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Main {
+/** 计蒜客学习中心   dfs剪枝
+ * 	《因数最多的数》
+ * 	 https://www.jisuanke.com/course/6497/341236
+ *
+	输入：
+3
+10
+100
+1000
+
+	输出：
+6
+60
+840
+
+*	在没有剪枝的情况下，可以满足测试案例，但是当数据量变大后会严重超时
+*    
+*    
+* 项目名称：OJ   
+* 类名称：jsk_dfs06   
+* 创建人：bbbdbbb   
+* 创建时间：2020年4月8日 上午10:38:31   
+* @version        
+*/
+public class jsk_dfs06 {
 
 	public static Set<String> hs = new HashSet<String>();
 	private static int[] nums;
@@ -14,7 +36,6 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		long startMili=System.currentTimeMillis();
 
 		Scanner scan = new Scanner(System.in);
 		int n = scan.nextInt();
@@ -29,10 +50,7 @@ public class Main {
 		}
 		
 		
-		
-		//计时，在提交答案的时候要删除
-		long endMili=System.currentTimeMillis();
-		System.out.println("总耗时为："+(endMili-startMili)+"毫秒");
+	
 	}
 
 

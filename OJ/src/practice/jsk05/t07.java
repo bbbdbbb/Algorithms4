@@ -26,7 +26,7 @@ public class t07 {
 				chs[index] = '0';
 			}else{
 				ch = (char) (ch + 1);
-				i--;//i要先减后加，保持不变，搜索新的ch
+				i--;//i要先减后加，保持不变，搜索新的ch 
 			}
 		}
 		

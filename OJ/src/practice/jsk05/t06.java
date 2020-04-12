@@ -3,6 +3,8 @@ package practice.jsk05;
 import java.util.Scanner;
 
 /**   终极优化，实验证明  String类的substring方法十分浪费时间
+ * 
+ * 	一个数组记录输入的文本，一个变量记录光标的位置，一个变量记录当前大小写的状态
 *    
 * 项目名称：OJ   
 * 类名称：t06   

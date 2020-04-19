@@ -17,16 +17,9 @@ public class Main {
 		long startMili=System.currentTimeMillis();
 
 		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
-		nums = new int[n];
+
 		
-		for(int i = 0; i < n; i++){
-			nums[i] = scan.nextInt();
-		}
-		
-		for(int i = 0; i < n; i++){
-			f(nums[i]);
-		}
+		System.out.println(Integer.MAX_VALUE);
 		
 		
 		

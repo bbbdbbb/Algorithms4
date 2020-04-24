@@ -5,6 +5,16 @@ import java.util.Scanner;
 /** 贪心算法
  * 算法训练 旅行家的预算 
  * http://lx.lanqiao.cn/problem.page?gpid=T75 
+问题描述
+　　一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。
+给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），
+油站i离出发点的距离Di、每升汽油价格Pi（i=1，2，……N）。计算结果四舍五入至小数点后两位。如果无法到达目的地，则输出“No Solution”。
+	样例输入
+275.6 11.9 27.4 2.8 2
+102.0 2.9
+220.0 2.2
+	样例输出
+26.95
 *    
 * 项目名称：OJ   
 * 类名称：ALGO_15   
@@ -58,32 +68,32 @@ public class ALGO_15 {
 			if(C * D2 >= (ds[j] - ds[i])){//在第i个加油站 加满C升油 可以 到达第j个加油站
 				if( (res * D2) >= (ds[j] - ds[i])){//油箱里剩余的res升油可以到达第j个加油站
 					//不用在第i个加油站加油
-					System.out.println("1打桩" + i +" : 不用加油     j = " + j + "   res = " + res +"     ds[j] = " + ds[j] + "   ds[i]"+ds[i]);
+					//System.out.println("1打桩" + i +" : 不用加油     j = " + j + "   res = " + res +"     ds[j] = " + ds[j] + "   ds[i]"+ds[i]);
 				}else{//需要加适量的油才可以到达第j个加油站
 					double s = ds[j] - ds[i];
-					double tem = (double)Math.round((res * D2)*1000)/1000;
-					s = (double)Math.round((s - tem) * 1000) / 1000; //s - 油箱剩余的油能行驶的路程
-					ans = (double)Math.round(( ans + (double)(Math.round((s / D2) * ps[i] * 1000)) /1000) *1000) / 1000;
+					double tem = res * D2;
+					s = (s - tem); //s 减去 油箱剩余的油能行驶的路程
+					ans =  ans + (s / D2) * ps[i];
 					//不要忘记加油
-					res = (double)Math.round((res + (double)(Math.round((s / D2) * 1000)) / 1000) * 1000) / 1000;
+					res = res + (s / D2);
 					
 					
-					System.out.println("2打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i] + "    s = "+s  + "  res = "+res);
+					//System.out.println("2打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i] + "    s = "+s  + "  res = "+res);
 
 				}
 			}else{//在第i个加油站 加满C升油 不能 到达第j个加油站
 				//把油加满
-				ans = (double)Math.round((ans +(C - res) * ps[i]) * 1000) / 1000;
+				ans = ans +(C - res) * ps[i];
 				res = C;
-				System.out.println("3打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i]);
+				//System.out.println("3打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i]);
 			}
 			
 			
-			//模拟汽车从加油站i 行驶到 加油站i+1 消耗油的过程
-			if(j + 1 == i){
+			//模拟汽车从加油站i 行驶到 加油站j消耗油的过程
+			if(C * D2 >= (ds[j] - ds[i])){
 				res = 0;
 			}else{
-				res = (double)Math.round((res - (double)(Math.round((ds[i+1] - ds[i]) / D2 * 1000)) / 1000) * 1000) /1000;
+				res = res - (ds[j] - ds[i]) / D2 ;
 			}
 		}
 		
@@ -116,7 +126,7 @@ public class ALGO_15 {
 //			//模拟汽车从加油站i 行驶到 加油站i+1 消耗油的过程
 //			//res = res - (ds[i+1] - ds[i]) / D2;  //代码优化： 将模拟过程直接添加到加油的时候，减少运算
 //		}
-		
+//		
 		if(i == N+1){//成功到达终点
 			System.out.printf("%.2f",ans);
 		}else{//中间break 了

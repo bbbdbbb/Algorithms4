@@ -50,9 +50,12 @@ public class ALGO_225 {
 			 * 找当前石堆中数目最多的最大值和次大值
 			 */
 			for(int i = 1; i < n; i++){
+				//大于次大值，记录索引
 				if(nums[i] > nums[max1]){
 					max1 = i;
 				}
+				//如果nums[i]大于次大值，并且已经在上面记录了索引
+				//但是 它 也有可能 并当前记录的最大值还大，所以在这里进行一次判断
 				if(nums[max1] > nums[max2]){
 					int temp = max1;
 					max1 = max2;

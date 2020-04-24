@@ -69,7 +69,7 @@ public class ADV_194 {
 		//System.out.println("×ÜºÄÊ±Îª£º"+(endMili-startMili)+"ºÁÃë");
 	}
 	
-	public static class node{
+	private static class node{
 		public int hava;
 		public int need;
 		

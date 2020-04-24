@@ -3,7 +3,7 @@ package greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** 贪心算法，细节。虽然自己凑出了所以情况，但是感觉代码不够优雅，过段时间优化一下
+/** 贪心算法，细节。虽然自己凑出了所以情况，但是感觉代码不够优雅，过段时间优化一下   ->  4月24日，代码已优化，简洁
  * 算法训练 纪念品分组
  * http://lx.lanqiao.cn/problem.page?gpid=T96
  * 
@@ -18,85 +18,46 @@ import java.util.Scanner;
 * 创建时间：2020年3月25日 下午10:41:43   
 * @version        
 */
-public class ALGO_34 {
 
+public class ALGO_34{
+	
 	public static int[] ns;
 	public static boolean[] bis;
 	
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-		int w = scan.nextInt();
-		int n = scan.nextInt();
+	
+	public static void main(String[] args){
+	
+		Scanner sc = new Scanner(System.in);
+		int w = sc.nextInt();
+		int n = sc.nextInt();
 		ns = new int[n];
 		bis = new boolean[n];
-		for (int i = 0; i < n; i++) {
-			ns[i] = scan.nextInt();
+		for(int i = 0; i < n; i++){
+			ns[i] = sc.nextInt();
 		}
 		Arrays.sort(ns);
 		
-		int ans = 0;
+		int count = 0;
 		for(int i = n - 1; i >= 0; i--){
-			if(bis[i])		continue;//ns[i]已经被使用
+			if(bis[i])		continue;
 			
-			boolean flag = false;
+			//boolean flag = false;
 			int j = 0;
 			for(; j < i; j++){
-				if(ns[j] + ns[i] == w && !bis[j]){
-					//找到两个元素 可以 分成一组
+				if(!bis[j] && ns[j] + ns[i] <= w ){
 					bis[j] = true;
 					bis[i] = true;
-					//System.out.println("打桩："+ns[i]+" and "+ns[j]);
-					ans++;
+					count++;
+					//flag = true;
 					break;
-				}else if(ns[j] + ns[i] > w && !bis[j]){
-					
-					while(--j >= 0){
-						if(bis[j]){
-							continue;
-						}else{
-							//a[j]和a[i]分成一组
-							bis[j] = true;
-							bis[i] = true;
-							//System.out.println("打桩："+ns[i]+" and "+ns[j]);
-							flag = true;
-							break;
-						}
-					}
-			
-					ans++;
-					if(flag){
-						break;
-					}else{//a[i]不能和其他纪念品组合，只能单独分组
-						bis[i] = true;
-						//System.out.println("打桩："+ns[i]);
-						break;
-					}
-					
 				}
 			}
-			
-
 			if(j == i){
 				bis[i] = true;
-				//System.out.print("打桩："+ns[i]);
-				ans++;
-				for(--j; j >= 0; j--){
-					if(bis[j]){
-						continue;
-					}else{
-						bis[j] = true;
-						//System.out.print(" and "+ns[j]);
-						break;
-					}
-				}
-				//System.out.println();
+				count++;
 			}
-			
 		}
 		
-		System.out.println(ans);
-		
+		System.out.println(count);
 	}
-
 }

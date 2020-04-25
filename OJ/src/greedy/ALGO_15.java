@@ -68,6 +68,8 @@ public class ALGO_15 {
 			if(C * D2 >= (ds[j] - ds[i])){//在第i个加油站 加满C升油 可以 到达第j个加油站
 				if( (res * D2) >= (ds[j] - ds[i])){//油箱里剩余的res升油可以到达第j个加油站
 					//不用在第i个加油站加油
+					
+					res = res - (ds[j] - ds[i]) / D2 ;
 					//System.out.println("1打桩" + i +" : 不用加油     j = " + j + "   res = " + res +"     ds[j] = " + ds[j] + "   ds[i]"+ds[i]);
 				}else{//需要加适量的油才可以到达第j个加油站
 					double s = ds[j] - ds[i];
@@ -75,26 +77,32 @@ public class ALGO_15 {
 					s = (s - tem); //s 减去 油箱剩余的油能行驶的路程
 					ans =  ans + (s / D2) * ps[i];
 					//不要忘记加油
-					res = res + (s / D2);
+					//res = res + (s / D2);
 					
-					
+					//油使用完，省略计算
+					res = 0;
 					//System.out.println("2打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i] + "    s = "+s  + "  res = "+res);
-
 				}
+				
+				//直接从加油站i 跑 到加油站j，考虑到外层for循环有一个i++，这里先减1，一会儿会加回来的
+				i = j - 1;
 			}else{//在第i个加油站 加满C升油 不能 到达第j个加油站
 				//把油加满
 				ans = ans +(C - res) * ps[i];
 				res = C;
 				//System.out.println("3打桩" + i +" : ans = " + ans + "   ps[i] = " + ps[i]);
+				
+				//行驶到下一站
+				res = res - (ds[i+1] - ds[i]) / D2 ;
 			}
 			
 			
 			//模拟汽车从加油站i 行驶到 加油站j消耗油的过程
-			if(C * D2 >= (ds[j] - ds[i])){
-				res = 0;
-			}else{
-				res = res - (ds[j] - ds[i]) / D2 ;
-			}
+//			if(C * D2 >= (ds[j] - ds[i])){
+//				res = 0;
+//			}else{
+//				res = res - (ds[j] - ds[i]) / D2 ;
+//			}
 		}
 		
 			

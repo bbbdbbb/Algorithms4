@@ -6,6 +6,17 @@ import java.util.Scanner;
  * 计蒜客深度优先搜索第三题
  * 引爆炸弹
  * https://www.jisuanke.com/course/6497/341078  
+
+	输入：
+5 5
+00010
+00010
+01001
+10001
+01000
+	输出：
+2
+
 *    
 * 项目名称：OJ   
 * 类名称：jsk_dfs03   
@@ -58,7 +69,10 @@ public class jsk_dfs03 {
 
 	private static void dfs(int x, int y) {
 
+		//1.将当前点设置为访问状态
 		map[x][y] = '0';
+		
+		//2.不同方向进行深度搜索
 		for(int i = 0; i < 4; i++){
 			int tx = x + dir[i][0];
 			int ty = y + dir[i][1];

@@ -64,36 +64,43 @@ public class ADV_199 {
 		Arrays.sort(ns);
 		
 		int ans = 0;
-		boolean flag = true;
-		while(flag){
-			int i = 0;
-			for(; i < m; i++){
-				if(bis[i] == false)		break;
-			}
-			if(i == m){//全部区间都被满足
-				flag = false;
-				continue;
+		int count = 0;//对 被满足的区间 进行 计数
+		while(true){
+			//打桩：
+			//System.out.println("count = " + count);
+			if(count == m){//全部区间都被满足
+				break;
 			}
 			
+//这里不能设置为  min = 0，如果第0个区间的右边比较小，但这个区间有被选过了，那么可能会出现没有区间的右边先于第0个区间，而第0个区间已经被选了。
+//导致每次 选择 的都是 第0个区间，第0个区间又已经被满足了，后面的代码没有，一直都是 死循环
 			int min = -1;
 			//找最先结束的 区间
 			for(int j = 0; j < m; j++){
-				if(!bis[j] && ( min == -1 || ms2[j] < ms2[min])){//判断顺序不能变
+				if(!bis[j] && (min == -1 || ms2[j] < ms2[min]) ){
 					min = j;
 				}
 			}
 			//找值最大的一个点满足区间min，
-			int max = n -1;
+			int max = n - 1;
 			for(; max >= 0; max--){
-				if(ns[max] <= ms2[min]){
+				if(ns[max] <= ms2[min] && ns[max] >= ms1[min]){//判断顺序 不能 更改
 					break;
 				}
 			}
+			if(max < 0){
+				break;
+			}
+			//打桩：查看选择的 区间  和 选择的点
+			//System.out.println("点：" + ns[max] + "区间 ： " + ms1[min] + " - " + ms2[min]);
 			
 			//将所有包含 点max的区间设置为true
 			for(int j = 0; j < m; j++){
 				if(!bis[j] && ms1[j] <= ns[max] && ms2[j] >= ns[max]){//区间j未被满足，且点在区间内
 					bis[j] = true;
+					count++;
+					//打桩： 查看 已经被满足的区间
+					//System.out.println("点：" + ns[max] + "区间 ： " + ms1[j] + " - " + ms2[j]);
 				}
 			}
 			
@@ -101,7 +108,11 @@ public class ADV_199 {
 		}
 		
 		
-		System.out.println(ans);
+		if(count == m){
+			System.out.println(ans);
+		}else{
+			System.out.println(-1);
+		}
 		
 	}
 

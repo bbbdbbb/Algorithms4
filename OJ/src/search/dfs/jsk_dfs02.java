@@ -50,9 +50,12 @@ public class jsk_dfs02 {
 	}
 
 	private static void dfs(int x, int y) {
-
 		//利用dfs将一个草丛'#'全部替换成'.'
+		
+		//1.将当前点设置为访问状态
 		map[x][y] = '.';
+		
+		//2.不同方向进行深度搜索
 		for(int i = 0; i < 4; i++){
 			int tx = x + dir[i][0];
 			int ty = y + dir[i][1];

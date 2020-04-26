@@ -65,6 +65,7 @@ public class jsk_dfs05_cut {
 			return;
 		}
 		
+		//1.将当前点设置为访问状态
 		map[x][y] = 1;
 		
 		//如果map[x][y]的四个方向  其中有一个点的剩余路线lost[tx][ty]只有一个了，那么必须走这个方向
@@ -80,6 +81,7 @@ public class jsk_dfs05_cut {
 			}		
 		}
 		
+		//2.不同方向进行深度搜索
 		for(int i = 0; i < 4; i++){
 			if(d != -1 && d != i){
 				continue;
@@ -96,7 +98,7 @@ public class jsk_dfs05_cut {
 					int ex = tx + dir[j][0];
 					int ey = ty + dir[j][1];
 					if(in(ex,ey) && map[ex][ey] == 0){
-						if(lost[ex][ey] < 2){
+						if(lost[ex][ey] < 2){//因为终点进行了特殊处理，多加了一，所以不会在到达终点前两步就将flag设置为false,导致接下来的if判断为错--停止搜索
 							flag = false;
 							break;
 						}else if(lost[ex][ey] == 2){
@@ -111,7 +113,7 @@ public class jsk_dfs05_cut {
 			}			
 		}
 		
-		//恢复
+		//3.恢复为没有被访问的状态
 		map[x][y] = 0;
 		for(int i = 0; i < 4; i++){
 			int tx = x + dir[i][0];

@@ -12,36 +12,10 @@ class Main{
 	public static void main(String[] args){
 	
 		Scanner sc = new Scanner(System.in);
-		int w = sc.nextInt();
-		int n = sc.nextInt();
-		ns = new int[n];
-		bis = new boolean[n];
-		for(int i = 0; i < n; i++){
-			ns[i] = sc.nextInt();
-		}
-		Arrays.sort(ns);
-		
-		int count = 0;
-		for(int i = n - 1; i >= 0; i--){
-			if(bis[i])		continue;
-			
-			//boolean flag = false;
-			int j = 0;
-			for(; j < i; j++){
-				if(!bis[j] && ns[j] + ns[i] <= w ){
-					bis[j] = true;
-					bis[i] = true;
-					count++;
-					//flag = true;
-					break;
-				}
-			}
-			if(j == i){
-				bis[i] = true;
-				count++;
-			}
-		}
-		
-		System.out.println(count);
+
+		//测试 先赋值  在判断 是否  相等
+		int x = -1;
+		System.out.println(((x = 0) == 1) + "  x = " + x);
+		System.out.println(((x = 2) == 2) + "  x = " + x);
 	}
 }

@@ -45,7 +45,8 @@ public class ALGO_224_Sticks_cut {
 		while((n=scan.nextInt()) != 0 ){
 			s = new int[n];
 			vis = new boolean[n];
-			sum = 0;				//我忽略了这里，导致第一次以后的计算出错
+//我忽略了这里 sum 必须每次while循环都要赋值为0，导致第一次以后的计算出错			
+			sum = 0;				
 			for(int i=0;i<n;i++){
 				s[i] = scan.nextInt();//先存储，一会再排序
 				sum += s[i];

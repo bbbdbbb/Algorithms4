@@ -3,8 +3,8 @@ package greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/** 贪心算法，思路简单，暴力，后期可以考虑代码优化；无解输出-1，没有解决
- * ADV-199
+/** 贪心算法，思路简单，暴力，后期可以考虑代码优化；无解输出-1，没有解决   ——> 已经解决
+ *  ADV-199
  *  算法提高 线段和点
  *  http://lx.lanqiao.cn/problem.page?gpid=T367  
 问题描述

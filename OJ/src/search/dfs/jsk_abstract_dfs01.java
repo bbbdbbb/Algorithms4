@@ -2,7 +2,7 @@ package search.dfs;
 
 import java.util.Scanner;
 
-/** 抽象深度优先搜索
+/** 抽象深度优先搜索      进阶：ALGO_224_Sticks_cut
  *  计蒜客抽象深度优先搜索第一题
  *  
  *   题目：
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *   判断m根木棍能否拼凑成一个等边三角形
  *   
  *  创建时间：2020年3月30日 上午10:01:37    
- *  代码优化：2020年3月31日   -->  通过记录下一个木棍的位置，减少dfs()中for循环的次数。本质上，是去重，将(1,4),(2,3),(5)
+ *  代码优化：2020年3月31日   -->  通过记录下一个木棍的位置，减少dfs()中for循环的次数。
  *  				   -->  本质上，是去重.原来将(1,4),(2,3),(5) 和 (1,4),(5),(2,3)因为顺序不同看成不同的选择
  *  				   -->  优化后，将不会重复判断
 *    
@@ -108,7 +108,6 @@ public class jsk_abstract_dfs01 {
 	 * @param index 下一个应该搜索的木棍的索引
 	 */
 	private static void dfs(int count, int sum, int index) {
-		test++;
 		
 		if(flag){
 			return;
@@ -144,6 +143,7 @@ public class jsk_abstract_dfs01 {
 	
 	//使用搜索枚举
 	private static void dfs2(int count, int sum, int index) {
+		test++;
 
 		if(flag){
 			return;
@@ -169,7 +169,7 @@ public class jsk_abstract_dfs01 {
 		}
 		
 		//选 当前  木棍
-		if(!vis[index]){
+		if(!vis[index] && (sum + item[index]) <= (s / 3)){
 			dfs2(count,sum + item[index],index + 1);
 		}
 		//不选 当前 木棍

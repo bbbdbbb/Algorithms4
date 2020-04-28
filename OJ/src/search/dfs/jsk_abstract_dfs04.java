@@ -82,7 +82,7 @@ public class jsk_abstract_dfs04 {
 			return;
 		}
 		
-		if(r == 9 && c ==0){
+		if(r == 9 && c ==0){//找到 一种  填写数独的方式  就必须 抓住机会将其打印，不然即使将flag设置为flag,也会使得数组map[]中的答案被修改
 			flag = true;
 			for(int i = 0; i < 9; i++){
 				for(int j = 0; j < 9; j++){
@@ -128,7 +128,7 @@ public class jsk_abstract_dfs04 {
 				row[r][i] = true;
 				col[c][i] = true;
 				rea[r/3*3 + c/3][i] = true;
-				//查看错误的  上面如果 缺少return语句 会导致 数独中的 固有数字被更改，从而不会有正确结果  例子：map[4][5]
+				//打桩：查看错误信息  上面如果 缺少return语句 会导致 数独中的 固有数字被更改，从而不会有正确结果  例子：map[4][5]
 //				if(r == 4 && c == 5){
 //					for(int i1 = 0; i1 < 9; i1++){
 //						for(int j = 0; j < 9; j++){

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 		同时利用队列和hashmap来解决问题。队列就是bfs的基础
  * 		hashmap的key是某一时刻棋子的位置，value是此时刻的前一时刻的棋子位置
  * 		当N = 3时，第一个kv就是（"WWW BBB","s"）
- * 		第而成的kv就是（"WWW BBB","WW WBBB"）和（"WWW BBB","WWWB BB"）
+ * 		第二层的kv就是（"WW WBBB","WWW BBB"）和（"WWWB BB","WWW BBB"）
  * 
  * 		最后，当出现了 "BBB WWW"就结束bfs，便可以倒退bfs的路线了
  * 

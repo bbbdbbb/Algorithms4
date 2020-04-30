@@ -4,6 +4,25 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 
+/** 计蒜客学习中心   广度优先搜索bfs 
+ * 	密码锁
+ * 	https://www.jisuanke.com/course/6497/341090
+ * 
+ *  第一行输入四位数字,表示密码锁的初始状态。第二行输入四位数字，表示开锁的密码。输出一个整数，表示最小步骤
+ *  操作有三种，第一种对于四位数字中的某一位加一，第二种对于四位数字中的某一位减一，第三种对于四位数字的相邻两位进行交换。
+	输入：
+1234
+2144
+	输出：
+2
+*    
+* 项目名称：OJ   
+* 类名称：jsk_bfs04   
+* 类描述：   
+* 创建人：bbbdbbb   
+* 创建时间：2020年4月30日 上午10:22:04   
+* @version        
+*/
 public class jsk_bfs04 {
 
 	private static int sta;

@@ -3,7 +3,7 @@ package dp.LCS;
 import java.util.Scanner;
 
 /** 计蒜客学习中心    最长公共子序列和编辑距离
- * 	蒜头君的日志
+ * 	蒜头君的日志（最长公共上升子序列）
  * 	https://www.jisuanke.com/course/6497/341121  
 *    
 * 项目名称：OJ   

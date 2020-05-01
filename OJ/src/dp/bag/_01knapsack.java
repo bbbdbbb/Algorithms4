@@ -35,7 +35,7 @@ public class _01knapsack {
 			for(int j = 0; j <= W; j++){
 				dp[i][j] = dp[i-1][j];
 				if(ws[i] <= j){
-					dp[i][j] = Math.max(dp[i][j], dp[i-1][j-ws[i]] + vs[i]);
+					dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-ws[i]] + vs[i]);
 				}
 			}
 		}
